@@ -1,0 +1,45 @@
+default_language_version:
+  python: python3
+  
+repos:
+  # python code formatting
+  - repo: https://github.com/psf/black
+    rev: 22.6.0
+    hooks:
+      - id: black
+        args: [--line-length, "99"]
+        additional_dependencies: ['click==8.0.4']
+
+  # python import sorting
+  - repo: https://github.com/PyCQA/isort
+    rev: 5.10.1
+    hooks:
+      - id: isort
+        args: ["--profile", "black", "--filter-files"]
+
+  # python upgrading syntax to newer version
+  - repo: https://github.com/asottile/pyupgrade
+    rev: v2.32.1
+    hooks:
+      - id: pyupgrade
+        args: [--py38-plus]        
+
+  # python check (PEP8), programming errors and code complexity
+  - repo: https://github.com/PyCQA/flake8
+    rev: 4.0.1
+    hooks:
+      - id: flake8
+        args:
+          [
+            "--extend-ignore",
+            "E203,E266,E501,W503,F403,F401",
+            "--exclude",
+            "models/*,data/*",
+          ]        
+
+  # checks your code base for missing docstrings
+  -   repo: https://github.com/econchick/interrogate
+    rev: 1.5.0
+    hooks:
+      - id: interrogate
+        args: [src, -v, -i, --fail-under=80]
