@@ -2,6 +2,7 @@
 
 
 ## Tools used in this project
+* [hydra](https://hydra.cc/): Manage configuration files
 * [MLflow](https://mlflow.org/): An open source platform for managing the end-to-end machine learning lifecycle
 * [DVC](https://dvc.org/): Data version control
 * [Poetry](https://python-poetry.org/): Dependency management 
